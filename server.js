@@ -9,7 +9,8 @@ const countries = JSON.parse(fs.readFileSync(countriesFilePath, 'utf8'));
 
 // Endpoint to get all countries
 app.get('/v3.1/all', (req, res) => {
-    res.json(countries);
+    const countryNames = countries.map(country => country.name.common);
+    res.json(countryNames);
 });
 
 // Endpoint to get country by name
